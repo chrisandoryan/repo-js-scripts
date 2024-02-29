@@ -34,15 +34,15 @@ async function fill_all_logbooks () {
     for (var i = 0; i < students.length; i++) {
         let stud = students[i];
         stud.click();
-        await timer(3000); 
+        await timer(5000); 
 
         // Iterate through logbook months
-        let months = $('#monthTab li a');
+        let months = $('#monthTab li a:has(span)');
         for (var j = 0; j < months.length; j++) {
             let lis = months[j];
             lis.click();
 
-            await timer(3000); 
+            await timer(5000); 
             
             // Generate random date of in a second week of each logbook month
             let first_day_of_the_logbook_month = $("#logBookTable > tbody > tr:nth-child(1) > td.dt-center.sorting_1").html();
@@ -67,7 +67,7 @@ async function fill_all_logbooks () {
             let approve_btn = $('#btnapp');
             approve_btn.click();
             
-            await timer(3000); 
+            await timer(5000); 
         }
     }
 }
