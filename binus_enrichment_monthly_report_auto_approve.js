@@ -11,7 +11,6 @@ function is_still_loading(refresh_rate=1000) {
           return true
       } else {
           console.log("Still loading...")
-          return false
       }
     }, refresh_rate);
 }
