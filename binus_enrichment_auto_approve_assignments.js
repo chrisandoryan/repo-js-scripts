@@ -11,7 +11,6 @@ function is_still_loading(refresh_rate=1000) {
           return true
       } else {
           console.log("Still loading...")
-          return false
       }
     }, refresh_rate);
 }
@@ -22,7 +21,7 @@ async function approve_all_assignments() {
     for (var i = 0; i < students.length; i++) {
         let stud = students[i];
         stud.click();
-        is_still_loading(1000);
+        is_still_loading(500);
         await timer(1000); 
 
         // Iterate through logbook months
@@ -31,7 +30,7 @@ async function approve_all_assignments() {
             let btn = approve_buttons[j];
             btn.click();
 
-            is_still_loading(1000);
+            is_still_loading(500);
             await timer(1000); 
         }
     }
