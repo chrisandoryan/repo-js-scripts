@@ -5,13 +5,22 @@ window.alert = function() {
 
 function is_still_loading(refresh_rate=1000) {
     const interval_id = setInterval(() => {
-      if (!document.getElementById('bubble-loading')) {
-          clearInterval(interval_id);
-          console.log("Loading is gone...")
-          return true
-      } else {
-          console.log("Still loading...")
-      }
+        const elements = document.querySelectorAll('#popUpLoader');
+        let foundVisibleElement = false;
+
+        elements.forEach(element => {
+            if (window.getComputedStyle(element).display !== 'none') {
+                foundVisibleElement = true;
+            }
+        });
+
+        if (!foundVisibleElement) {
+            clearInterval(interval_id);
+            console.log("Loading is gone...")
+            return true
+        } else {
+            console.log("Still loading...")
+        }
     }, refresh_rate);
 }
 
