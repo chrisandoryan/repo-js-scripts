@@ -5,13 +5,22 @@ window.alert = function() {
 
 function is_still_loading(refresh_rate=1000) {
     const interval_id = setInterval(() => {
-      if (!document.getElementById('bubble-loading')) {
-          clearInterval(interval_id);
-          console.log("Loading is gone...")
-          return true
-      } else {
-          console.log("Still loading...")
-      }
+        const elements = document.querySelectorAll('#popUpLoader');
+        let foundVisibleElement = false;
+
+        elements.forEach(element => {
+            if (window.getComputedStyle(element).display !== 'none') {
+                foundVisibleElement = true;
+            }
+        });
+
+        if (!foundVisibleElement) {
+            clearInterval(interval_id);
+            console.log("Loading is gone...")
+            return true
+        } else {
+            console.log("Still loading...")
+        }
     }, refresh_rate);
 }
 
@@ -46,7 +55,7 @@ async function fill_all_logbooks () {
     for (var i = 0; i < students.length; i++) {
         let stud = students[i];
         stud.click();
-        is_still_loading(500)
+        is_still_loading(1000)
         await timer(3000); 
 
         // Iterate through logbook months
@@ -80,7 +89,7 @@ async function fill_all_logbooks () {
             let approve_btn = $('#btnapp');
             approve_btn.click();
             
-            is_still_loading(500)
+            is_still_loading(1000)
             await timer(3000); 
         }
     }
