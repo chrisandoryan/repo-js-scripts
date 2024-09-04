@@ -29,9 +29,10 @@ async function approve_all_monthly_reports () {
         for (var j = 0; j < approve_buttons.length; j++) {
             let btn = approve_buttons[j];
             btn.click();
-
+            console.log(`Approving ${j} of ${approve_buttons.length} for student ${i}`)
             is_still_loading(1000)
             await timer(3000); 
+            console.log(`Approved`)
         }
     }
 }
